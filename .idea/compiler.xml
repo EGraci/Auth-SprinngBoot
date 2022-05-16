@@ -7,6 +7,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="SecurityFilm" />
         <module name="Challange4" />
       </profile>
     </annotationProcessing>
@@ -14,6 +15,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="Challange4" options="-parameters" />
+      <module name="SecurityFilm" options="-parameters" />
     </option>
   </component>
 </project>

@@ -3,10 +3,7 @@ package com.binaracademy.Challange4.Entity;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.sql.Date;
@@ -17,23 +14,28 @@ import java.sql.Time;
 @Getter
 @Setter
 public class VwNota {
-    @Id
-    @Column(name = "id")
-    private BigInteger id;
-    @Column(name = "nama")
-    private String nama;
-    @Column(name = "film")
-    private String film;
+    @EmbeddedId
+    @AttributeOverrides
+            ({
+                    @AttributeOverride(name = "idJadwal", column = @Column(name = "id_jadwal")),
+                    @AttributeOverride(name = "noKursi", column = @Column(name = "no_kursi"))
+            })
+    private VwNotaPk vwNotaPk;
+    @Column(name = "id_nota")
+    private Long idNota;
     @Column(name = "studio")
     private String studio;
-    @Column(name = "kursi")
-    private Integer kursi;
-    @Column(name = "tanggal")
+    @Column(name = "username")
+    private String nama;
+    @Column(name = "nm_film")
+    private String film;
+    @Column(name = "tgl_tayang")
     private Date tanggal;
-    @Column(name = "mulai")
+    @Column(name = "jm_mulai")
     private Time mulai;
-    @Column(name = "selesai")
+    @Column(name = "jm_selesai")
     private Time selesai;
-    @Column(name = "total")
-    private BigDecimal total;
+    @Column(name = "hg_tiket")
+    private BigDecimal harga;
 }
+

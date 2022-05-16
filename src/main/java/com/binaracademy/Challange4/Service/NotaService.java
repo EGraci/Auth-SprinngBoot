@@ -31,19 +31,19 @@ public class NotaService {
             this.setLokasi(System.getProperty("java.io.tmpdir")+"/");
         }
     }
-    public String report(String format, Long user) throws Exception{
-        Optional<VwNota> lsVwNota = vwNotaRepository.findById(user);
-        File file = ResourceUtils.getFile("D:\\Java Workspace\\Challange4\\src\\main\\resources\\TiketFilm.jrxml");
-        JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
-        JRBeanCollectionDataSource jrBeanCollectionDataSource = new JRBeanCollectionDataSource(Collections.singleton(lsVwNota),false);
-
-        Map<String,Object> paramater = new HashMap<>();
-        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport,paramater,jrBeanCollectionDataSource);
-
-        if (format.equalsIgnoreCase("pdf")){
-            JasperExportManager.exportReportToPdfFile(jasperPrint,this.getLokasi()+"\\Nota.pdf");
-        }
-        return "File have Generated, path : "+ this.getLokasi();
-    }
+//    public String report(String format, Long nota) throws Exception{
+//        Optional<VwNota> lsVwNota = vwNotaRepository.findByIdNota(nota);
+//        File file = ResourceUtils.getFile("D:\\Java Workspace\\Challange4\\src\\main\\resources\\TiketFilm.jrxml");
+//        JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
+//        JRBeanCollectionDataSource jrBeanCollectionDataSource = new JRBeanCollectionDataSource(Collections.singleton(lsVwNota),false);
+//
+//        Map<String,Object> paramater = new HashMap<>();
+//        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport,paramater,jrBeanCollectionDataSource);
+//
+//        if (format.equalsIgnoreCase("pdf")){
+//            JasperExportManager.exportReportToPdfFile(jasperPrint,this.getLokasi()+"\\Nota.pdf");
+//        }
+//        return "File have Generated, path : "+ this.getLokasi();
+//    }
 
 }
