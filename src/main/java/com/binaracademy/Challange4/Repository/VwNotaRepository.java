@@ -6,10 +6,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
-import java.util.Optional;
+import java.util.List;
 
 @Repository
 @Transactional
 public interface VwNotaRepository extends JpaRepository<VwNota, VwNotaPk> {
-    Optional<VwNota> findByIdNota(Long user);
+    List<VwNota> findByIdNota(Long user);
 }

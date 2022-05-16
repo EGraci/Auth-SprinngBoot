@@ -11,5 +11,5 @@ import java.io.Serializable;
 @Setter
 public class VwNotaPk implements Serializable {
     private Long idJadwal;
-    private Integer noKuris;
+    private Integer noKursi;
 }
