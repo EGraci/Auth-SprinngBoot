@@ -14,10 +14,12 @@ public class AppUser {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_user")
     private Long idUser;
-    @Column(name = "username")
+    @Column(name = "username", unique = true)
     private String username;
     @Column(name = "email")
     private  String  email;
     @Column(name = "password")
     private String password;
+    @Column(name = "role")
+    private String role;
 }

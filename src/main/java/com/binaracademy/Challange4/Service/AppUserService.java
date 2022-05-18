@@ -43,6 +43,7 @@ public class AppUserService {
             user.setUsername(userDto.getUsername());
             user.setEmail(userDto.getEmail());
             user.setPassword(passwordEncryptor.encryptPassword(userDto.getPassword()));
+            user.setRole("CUSTOMER");
             if(Objects.isNull(user.getIdUser())){
                 userRepository.save(user);
                 return new ResponseEntity<>(user,HttpStatus.CREATED);

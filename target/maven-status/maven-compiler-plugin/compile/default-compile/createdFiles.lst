@@ -13,6 +13,7 @@ com\binaracademy\Challange4\Repository\VwJadwalRepository.class
 com\binaracademy\Challange4\Dto\RawJadwalFilmDto.class
 com\binaracademy\Challange4\Dto\PesanDto.class
 com\binaracademy\Challange4\Dto\StudioDto.class
+com\binaracademy\Challange4\Config\UsersSecurityConfig.class
 com\binaracademy\Challange4\Controller\StudioController.class
 com\binaracademy\Challange4\Entity\VwNota.class
 com\binaracademy\Challange4\Repository\StudioRepository.class
