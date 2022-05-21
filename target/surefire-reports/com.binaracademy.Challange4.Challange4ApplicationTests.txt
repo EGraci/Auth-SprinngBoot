@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: com.binaracademy.Challange4.Challange4ApplicationTests
--------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 8.481 s - in com.binaracademy.Challange4.Challange4ApplicationTests

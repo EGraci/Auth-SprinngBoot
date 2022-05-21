@@ -14,6 +14,7 @@ D:\Java Workspace\SecurityFilm\src\main\java\com\binaracademy\Challange4\Entity\
 D:\Java Workspace\SecurityFilm\src\main\java\com\binaracademy\Challange4\Service\FilmService.java
 D:\Java Workspace\SecurityFilm\src\main\java\com\binaracademy\Challange4\Dto\JadwalDto.java
 D:\Java Workspace\SecurityFilm\src\main\java\com\binaracademy\Challange4\Entity\Kursi.java
+D:\Java Workspace\SecurityFilm\src\main\java\com\binaracademy\Challange4\Config\UsersFilterConfig.java
 D:\Java Workspace\SecurityFilm\src\main\java\com\binaracademy\Challange4\Dto\PesanDto.java
 D:\Java Workspace\SecurityFilm\src\main\java\com\binaracademy\Challange4\Entity\VwNotaPk.java
 D:\Java Workspace\SecurityFilm\src\main\java\com\binaracademy\Challange4\Repository\FilmRepository.java
@@ -21,6 +22,7 @@ D:\Java Workspace\SecurityFilm\src\main\java\com\binaracademy\Challange4\Control
 D:\Java Workspace\SecurityFilm\src\main\java\com\binaracademy\Challange4\Dto\UserDto.java
 D:\Java Workspace\SecurityFilm\src\main\java\com\binaracademy\Challange4\Challange4Application.java
 D:\Java Workspace\SecurityFilm\src\main\java\com\binaracademy\Challange4\Entity\Jadwal.java
+D:\Java Workspace\SecurityFilm\src\main\java\com\binaracademy\Challange4\Controller\LoginController.java
 D:\Java Workspace\SecurityFilm\src\main\java\com\binaracademy\Challange4\Entity\AppUser.java
 D:\Java Workspace\SecurityFilm\src\main\java\com\binaracademy\Challange4\Controller\AppUserController.java
 D:\Java Workspace\SecurityFilm\src\main\java\com\binaracademy\Challange4\Entity\Nota.java
@@ -31,6 +33,7 @@ D:\Java Workspace\SecurityFilm\src\main\java\com\binaracademy\Challange4\Entity\
 D:\Java Workspace\SecurityFilm\src\main\java\com\binaracademy\Challange4\Swagger\SwaggerConfig.java
 D:\Java Workspace\SecurityFilm\src\main\java\com\binaracademy\Challange4\Repository\KursiRepository.java
 D:\Java Workspace\SecurityFilm\src\main\java\com\binaracademy\Challange4\Dto\StudioDto.java
+D:\Java Workspace\SecurityFilm\src\main\java\com\binaracademy\Challange4\Service\LoginService.java
 D:\Java Workspace\SecurityFilm\src\main\java\com\binaracademy\Challange4\Repository\JadwalRepository.java
 D:\Java Workspace\SecurityFilm\src\main\java\com\binaracademy\Challange4\Repository\VwNotaRepository.java
 D:\Java Workspace\SecurityFilm\src\main\java\com\binaracademy\Challange4\Dto\RawJadwalFilmDto.java
@@ -38,6 +41,7 @@ D:\Java Workspace\SecurityFilm\src\main\java\com\binaracademy\Challange4\Entity\
 D:\Java Workspace\SecurityFilm\src\main\java\com\binaracademy\Challange4\Service\AppUserService.java
 D:\Java Workspace\SecurityFilm\src\main\java\com\binaracademy\Challange4\Entity\VwNota.java
 D:\Java Workspace\SecurityFilm\src\main\java\com\binaracademy\Challange4\Controller\NotaController.java
+D:\Java Workspace\SecurityFilm\src\main\java\com\binaracademy\Challange4\Config\CustomeAuthorFillter.java
 D:\Java Workspace\SecurityFilm\src\main\java\com\binaracademy\Challange4\Repository\VwJadwalRepository.java
 D:\Java Workspace\SecurityFilm\src\main\java\com\binaracademy\Challange4\Repository\AppUserRepository.java
 D:\Java Workspace\SecurityFilm\src\main\java\com\binaracademy\Challange4\Service\NotaService.java
