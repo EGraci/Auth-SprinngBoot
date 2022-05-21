@@ -1,57 +1,44 @@
 package com.binaracademy.Challange4.Config;
 
-import com.binaracademy.Challange4.Entity.AppUser;
-import com.binaracademy.Challange4.Repository.AppUserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
-import javax.sql.DataSource;
-import java.util.List;
-import java.util.Properties;
 
 @Configuration
 @EnableWebSecurity
+@RequiredArgsConstructor
 public class UsersSecurityConfig extends WebSecurityConfigurerAdapter {
-    @Autowired
-    private DataSource dataSource;
-
-    @Autowired
-    private AppUserRepository appUserRepository;
+    public final UserDetailsService userDetailsService;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(inMemoryUserDetailsManager());
+        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
     }
 
     @Bean
     public PasswordEncoder passwordEncoder(){
-        // algorithm password encoder
-        // return new BCryptPasswordEncoder();
-        return NoOpPasswordEncoder.getInstance();
+        // Password Algorithm
+         return new BCryptPasswordEncoder();
     }
-    @Bean
-    public InMemoryUserDetailsManager inMemoryUserDetailsManager(){
-        // set user on database to spring security
-        final Properties users = new Properties();
-        for(AppUser i: appUserRepository.findAll()){
-            users.put(i.getUsername(), String.format("%s,%s,enabled",i.getPassword(),i.getRole()));
-        }
-        return new InMemoryUserDetailsManager(users);
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        // URL PERMISSION
+        http.csrf().disable();
+        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+        http.authorizeHttpRequests().antMatchers("/singup", "/swagger-ui.html/**","/refresh-token").permitAll();
+        http.authorizeRequests().antMatchers("/login/**").permitAll();
+        http.authorizeRequests().antMatchers("/api/**").hasAnyAuthority("ADMIN");
+        http.authorizeRequests().antMatchers("/api/jadwal/vw/","/api/reservasi/**", "/api/nota/**").hasAnyAuthority("ADMIN","CUSTOMER");
+        http.authorizeRequests().anyRequest().authenticated();
     }
-//    @Override
-//    protected void configure(HttpSecurity http) throws Exception {
-//        // URL PERMISSION
-//        http.authorizeHttpRequests().antMatchers("/login","/singup").permitAll();
-//        http.authorizeHttpRequests().antMatchers("/api/**").hasRole("ADMIN").and().csrf().disable();
-//        http.authorizeHttpRequests().antMatchers("/api/reservasi/**","/api/jadwal/vw").hasRole("CUSTOMER").and().csrf().disable();
-//    }
 }

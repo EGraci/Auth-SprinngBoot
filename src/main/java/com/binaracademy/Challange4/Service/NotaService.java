@@ -20,8 +20,6 @@ import java.sql.Connection;
 import java.util.*;
 
 @Service
-@Getter
-@Setter
 public class NotaService {
     @Autowired
     VwNotaRepository vwNotaRepository;

@@ -7,6 +7,7 @@ import org.jasypt.util.password.StrongPasswordEncryptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,6 +19,9 @@ public class AppUserService {
     @Autowired
     private AppUserRepository userRepository;
 
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
+
     public ResponseEntity<?> ls_user(){
         List<AppUser> user = userRepository.findAll();
         try {
@@ -27,14 +31,6 @@ public class AppUserService {
             return new ResponseEntity<>(e, HttpStatus.EXPECTATION_FAILED);
         }
     }
-    // checked login
-    /*
-    if (passwordEncryptor.checkPassword(inputPassword, encryptedPassword)) {
-      // correct!
-    } else {
-      // bad login!
-    }
-     */
     public ResponseEntity<?> set_user(UserDto userDto){
         StrongPasswordEncryptor passwordEncryptor = new StrongPasswordEncryptor();
         AppUser user = new AppUser();
@@ -42,8 +38,8 @@ public class AppUserService {
             user.setIdUser(userDto.getIdUser());
             user.setUsername(userDto.getUsername());
             user.setEmail(userDto.getEmail());
-            user.setPassword(passwordEncryptor.encryptPassword(userDto.getPassword()));
-            user.setRole("CUSTOMER");
+            user.setPassword(bCryptPasswordEncoder.encode(userDto.getPassword()));
+            user.setRole(userDto.getRole());
             if(Objects.isNull(user.getIdUser())){
                 userRepository.save(user);
                 return new ResponseEntity<>(user,HttpStatus.CREATED);
