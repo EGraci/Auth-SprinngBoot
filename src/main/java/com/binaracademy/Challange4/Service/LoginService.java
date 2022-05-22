@@ -1,5 +1,6 @@
 package com.binaracademy.Challange4.Service;
 
+import com.binaracademy.Challange4.Dto.AppUserDto;
 import com.binaracademy.Challange4.Entity.AppUser;
 import com.binaracademy.Challange4.Repository.AppUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,13 +16,19 @@ public class LoginService {
     @Autowired
     BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    public ResponseEntity<?> add_user(AppUser appUser){
+    public ResponseEntity<?> add_user(AppUserDto appUser){
+        AppUser user = new AppUser();
         if(appUserRepository.existsByUsername(appUser.getUsername())){
             return new ResponseEntity<>("userName error.user sudah ada", HttpStatus.BAD_REQUEST);
         }
-        appUser.setPassword(bCryptPasswordEncoder.encode(appUser.getPassword()));
-        appUser.setRole("CUSTOMER");
-        appUserRepository.save(appUser);
+        user.setUsername(appUser.getUsername());
+        user.setEmail(appUser.getEmail());
+        user.setPassword(bCryptPasswordEncoder.encode(appUser.getPassword()));
+        user.setRole("CUSTOMER");
+        appUserRepository.save(user);
         return new ResponseEntity<>(appUser,HttpStatus.CREATED);
+    }
+    public AppUser user(String username){
+        return appUserRepository.findByUsername(username);
     }
 }

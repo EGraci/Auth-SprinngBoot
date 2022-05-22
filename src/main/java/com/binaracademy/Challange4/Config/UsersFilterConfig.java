@@ -40,6 +40,8 @@ public class UsersFilterConfig implements UserDetailsService {
         }else{
             logger.error("user not found");
         }
+        logger.info(user.getRole()+ "found");
+
         Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
         authorities.add(new SimpleGrantedAuthority(user.getRole()));
         return new  org.springframework.security.core.userdetails.

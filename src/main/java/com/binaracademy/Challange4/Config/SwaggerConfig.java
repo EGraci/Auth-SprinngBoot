@@ -1,4 +1,4 @@
-package com.binaracademy.Challange4.Swagger;
+package com.binaracademy.Challange4.Config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
